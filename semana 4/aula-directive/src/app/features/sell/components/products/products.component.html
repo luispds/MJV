@@ -1,12 +1,9 @@
 <h1>{{ titulo }}</h1>
-<h1>{{ exibeProduto }}</h1>
 
 <!--<div *ngIf="exibeProduto">-->
     
 <div *ngFor="let produto of produtos">
-    <!--<div class="card-produto" *ngIf="produto.disponivel">-->
-
-   <div class="card-produto" >
+    <div class="card-produto" *ngIf="produto.disponivel">
     <p (click)="clicouTag()">Descrição do produto: {{ produto.descricao }}</p>
     <!--<p (mouseenter)="passouMouse()">Preço: {{ produto.preco }}</p>-->
     <p>Preço: {{ produto.preco }}</p>
@@ -20,8 +17,8 @@
     <button (click)="obterPrecoDesconto()">Obter Desconto de 10%</button>
     <br>
     <button (click)="comprar()">Comprar</button>
+    </div>
+    <button (click)="exibeProdutoSimNao(produto.id)">ExibeProdutoSimNao</button>
     <hr>
 </div>
-</div>
 
-<button (click)="exibeProdutoSimNao()">ExibeProduto</button>

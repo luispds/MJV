@@ -13,6 +13,7 @@ export class ProductsComponent implements OnInit {
 
   produtos: Array<Product> =[
     {
+      id: 1,
       descricao: "Playstation 5 1TB",
       preco: 5000,
       quantidade: 3,
@@ -20,6 +21,7 @@ export class ProductsComponent implements OnInit {
       disponivel: true
     },
     {
+      id: 2,
       descricao: "Playstation 5",
       preco: 4600,
       quantidade: 1,
@@ -27,6 +29,7 @@ export class ProductsComponent implements OnInit {
       disponivel: true
     },
     {
+      id: 3,
       descricao: "Playstation 4",
       preco: 300,
       quantidade: 0,
@@ -34,6 +37,7 @@ export class ProductsComponent implements OnInit {
       disponivel: false
     },
     {
+      id: 4,
       descricao: "PC Gamer",
       preco: 5500,
       quantidade: 1,
@@ -41,6 +45,7 @@ export class ProductsComponent implements OnInit {
       disponivel: true
     },
     {
+      id: 5,
       descricao: "Xbox Serie X 1TB",
       preco: 5000,
       quantidade: 1,
@@ -80,7 +85,10 @@ export class ProductsComponent implements OnInit {
     console.log(event.target.value);
   }
 
-  exibeProdutoSimNao(){
+  exibeProdutoSimNao(id: number){
+    
+    var objIndex = this.produtos.findIndex((p => p.id == id));
+    this.produtos[objIndex].disponivel = !this.produtos[objIndex].disponivel 
     this.exibeProduto = !this.exibeProduto;
   }
 }

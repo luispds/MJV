@@ -71,7 +71,7 @@ function listaInteressesType(pessoa: Pessoa) : string[] {
 console.log("ex 4 ", listaInteressesType(p1))
 
 // Exercicio 5
-enum cursos {
+enum Curso {
     Angular = "Angular",
     Typescript = "Typescript",
     Git = "Git"
@@ -80,22 +80,22 @@ enum cursos {
 // Exercicio 6
 interface Professor {
     nome: string,
-    curso: cursos[]
+    cursos: Curso[]
 }
 // Exercicio 7
 const Alan: Professor = {
     nome: "Alan",
-    curso: [
-        cursos.Angular,
-        cursos.Typescript,
-        cursos.Git,         
+    cursos: [
+        Curso.Angular,
+        Curso.Typescript,
+        Curso.Git,         
     ]
 }
 const Nathan: Professor = {
     nome: "Nathan",
-    curso: [
-        cursos.Angular,
-        cursos.Typescript,             
+    cursos: [
+        Curso.Angular,
+        Curso.Typescript,             
      ]
 }
 
@@ -114,22 +114,38 @@ console.log("ex 9 ", professorNomes(professores))
 // Exercicio 10
 
 const professorCurso = (professor:Professor[]) =>{
-    const cursos: Array<cursos> = [];
-    professores.forEach(function (professor: Professor) {
-        professor.curso.forEach(function(curso) {
+    const cursos: Array<Curso> = [];
+    professores.forEach((professor) =>{
+        professor.cursos.forEach((curso) =>{
             cursos.push(curso);
         })
     })
     return cursos;
 }
 
+//ou
+const cursosdosProfessores = (professor:Professor[]): Curso[] =>{
+  return professor.reduce<Curso[]>((cursos, professor) => {
+    return cursos.concat(professor.cursos);
+  }, [])
+
+//ou
+const professorNomes22 = (professores:Professor[]) => {
+    return professores.map(professor => professor.cursos).flat()
+    //ou
+    return professores.flatMap(x => x.cursos)
+}
+
 console.log("ex 10 ", professorCurso(professores))
 
 // Exercicio 11
 
-const professorTypeScript = (professor:Professor[]) : any => {
-    return professores.find(professor => professor.curso.includes(cursos.Typescript))
+const professorTypeScript = (professor:Professor[])  => {
+    return professores.find(professor => professor.cursos.includes(Curso.Typescript))
 }
 
 console.log("ex 11. ", professorTypeScript(professores))
 
+const profQdaAulaTs = professorTypeScript(professores)
+//verifica campo antes de usar
+//profQdaAulaTs?.cursosts-node script.ts

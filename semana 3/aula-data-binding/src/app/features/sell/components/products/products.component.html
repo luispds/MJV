@@ -1,0 +1,13 @@
+<h1>{{titulo}}</h1>
+
+
+<div>
+    <p (click)="clickTag()">Descrição do produto: {{produto.descricao}}</p>
+    <p>Quantidade {{produto.quantidade}}</p>
+    <p>Preço {{produto.preco}}</p>
+    <p (mouseenter)="passouMouse()">Preço com Desconto {{precoComDesconto(produto.preco)}}</p>
+    <img src="{{produto.imagem}}" width="350px" height="250px">
+    <p><button (click)="obterDesconto()">obter desconto de 10%</button></p>
+    <p><button (click)="comprar()">Comprar</button></p>
+    <input type="text" (keyup)="pressionouTecla($event)">
+</div>

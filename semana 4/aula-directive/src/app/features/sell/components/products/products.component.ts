@@ -86,9 +86,7 @@ export class ProductsComponent implements OnInit {
   }
 
   exibeProdutoSimNao(id: number){
-    
-    var objIndex = this.produtos.findIndex((p => p.id == id));
-    this.produtos[objIndex].disponivel = !this.produtos[objIndex].disponivel 
-    this.exibeProduto = !this.exibeProduto;
+    //var objIndex = this.produtos.findIndex((p => p.id == id));
+    this.produtos[id].disponivel = !this.produtos[id].disponivel 
   }
 }
